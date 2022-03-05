@@ -1,3 +1,4 @@
+import os
 import scrapy
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -25,11 +26,13 @@ class menuspider(scrapy.Spider):
         self.driver.find_element_by_xpath(
             "//div[@id='root']/div/div/div/button/span/div"
         ).click()
+        self.user = os.environ.get('USER')
+        self.password = os.environ.get('PASS')
         self.driver.find_element_by_xpath("//input[@id='userNameInput']").send_keys(
-            "USERNAMEGOESHERE"
+            str(self.user)
         )  # username goes here
         self.driver.find_element_by_xpath("//input[@id='passwordInput']").send_keys(
-            "PASSWORDGOESHERE"
+            str(self.password)
         )  # password goes here rip security but i was too lazy
         self.driver.find_element_by_xpath('//*[@id="submitButton"]').click()
 

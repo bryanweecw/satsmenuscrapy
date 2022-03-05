@@ -5,15 +5,22 @@
 3. Selenium
 4. ChromeDriver
 
-# Set-up
-
-1. Update `satsmenuscraper/spiders/menuspider.py` with your appropriate NUS login details (lines 31 & 34)
-2. Update `satsmenuscraper/spiders/apispider.py` with the headers for querying the SATS menu api. You can find these by going to the SATS menu website, logging in, and monitoring the request object in the network tab of your browser when you click on the individual menu items to view nutritional information. The required header keys are already provided for you.
-
 # How to run
 
 1. Run `scrapy crawl menuscraper -o menu.json` (run daily at midnight to update menu for the day)
 2. Run `scrapy crawl scrapesatsapi -o satsapi.json` (only need to run weekly, which is when SATS uploads the following week's menu; or run whenever errors noticed, or menu seems out of sync)
-3. Run `cd ./tutorial`
-4. Run `python3 textfilegen.py`
-5. Stonks
+3. Run `python3 textfilegen.py`
+4. Stonks (menu written in summary.text)
+
+## Set-up
+
+1. Run the following in your terminal (remove square brackets, keep double quotes (where applicable), replace placeholder values):
+
+```
+export USER=[your_username]
+export PASS=[your_username]
+export DT="[datetime_from_chrome _request_header]"
+export SGT="[sgt_from_chrome _request_header]"
+export AUTHORIZATION="[authorization_from_chrome _request_header]"
+export XID="[xid_from_chrome _request_header]"
+```
