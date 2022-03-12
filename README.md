@@ -18,7 +18,7 @@
 
 ```
 export USER=[your_username]
-export PASS=[your_username]
+export PASS=[your_password]
 export DT="[datetime_from_chrome _request_header]"
 export SGT="[sgt_from_chrome _request_header]"
 export AUTHORIZATION="[authorization_from_chrome _request_header]"
