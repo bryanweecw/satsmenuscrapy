@@ -24,3 +24,11 @@ export SGT="[sgt_from_chrome _request_header]"
 export AUTHORIZATION="[authorization_from_chrome _request_header]"
 export XID="[xid_from_chrome _request_header]"
 ```
+
+## Copy-pastable Scripts
+
+```
+scrapy crawl menuscraper -o menu.json
+scrapy crawl scrapesatsapi -o satsapi.json
+python3 textfilegen.py
+```

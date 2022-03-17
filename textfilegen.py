@@ -5,37 +5,72 @@ with open("satsapi.json") as apijsondata:
 
 with open("menu.json") as menujsondata:
     menudata = json.load(menujsondata)
-text = ""
+text = "** DINING MENU FOR TODAY: **\n\n"
 for meal in menudata:
-    text += str(meal["name"]) + "\n" + "\n"
-    for dish in meal["setmeals"]:
-        del dish["name"]
-        dish.update(
-            (list(filter(lambda x: (x["qrCode"] == dish["mealurls"]), apidata)))[0]
-        )
-        text += (
-            str(dish["mealtype"])
-            + "\n"
-            + str(dish["name"])
-            + "\n"
-            + "Calories: "
-            + str(dish["totalCalorie"])
-            + str(dish["calorieUOM"])
-            + "\n"
-            + "Carbohydrate: "
-            + str(dish["totalCarbohydrate"])
-            + str(dish["carbohydrateUOM"])
-            + "\n"
-            + "Total Protein: "
-            + str(dish["totalProtein"])
-            + str(dish["proteinUOM"])
-            + "\n"
-            + "Total Fat: "
-            + str(dish["totalFat"])
-            + str(dish["fatUOM"])
-            + "\n"
-            + "\n"
-        )
+    if str(meal["name"]) == "Grab & Go":
+        text += "**" + str(meal["name"]) + "**" + "\n" + "\n"
+        for dish in meal["setmeals"]:
+            del dish["name"]
+            dish.update(
+                (list(filter(lambda x: (x["qrCode"] == dish["mealurls"]), apidata)))[0]
+            )
+            text += (
+                "**"
+                + str(dish["mealtype"])
+                + ":**"
+                + "\n"
+                + "__"
+                + str(dish["name"])
+                + "__"
+                + "\n"
+                + "\tCalories: "
+                + str(dish["totalCalorie"])
+                + str(dish["calorieUOM"])
+                + "\n"
+                + "\tCarbohydrate: "
+                + str(dish["totalCarbohydrate"])
+                + str(dish["carbohydrateUOM"])
+                + "\n"
+                + "\tTotal Protein: "
+                + str(dish["totalProtein"])
+                + str(dish["proteinUOM"])
+                + "\n"
+                + "\tTotal Fat: "
+                + str(dish["totalFat"])
+                + str(dish["fatUOM"])
+                + "\n"
+                + "\n"
+            )
+    else:
+        text += "**" + str(meal["name"]) + "**" + "\n" + "\n"
+        for dish in meal["setmeals"]:
+            del dish["name"]
+            dish.update(
+                (list(filter(lambda x: (x["qrCode"] == dish["mealurls"]), apidata)))[0]
+            )
+            text += (
+                "__"
+                + str(dish["name"])
+                + "__"
+                + "\n"
+                + "\tCalories: "
+                + str(dish["totalCalorie"])
+                + str(dish["calorieUOM"])
+                + "\n"
+                + "\tCarbohydrate: "
+                + str(dish["totalCarbohydrate"])
+                + str(dish["carbohydrateUOM"])
+                + "\n"
+                + "\tTotal Protein: "
+                + str(dish["totalProtein"])
+                + str(dish["proteinUOM"])
+                + "\n"
+                + "\tTotal Fat: "
+                + str(dish["totalFat"])
+                + str(dish["fatUOM"])
+                + "\n"
+                + "\n"
+            )
 
 print(text)
 

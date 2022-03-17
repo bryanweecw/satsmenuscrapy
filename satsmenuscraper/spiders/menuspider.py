@@ -26,8 +26,8 @@ class menuspider(scrapy.Spider):
         self.driver.find_element_by_xpath(
             "//div[@id='root']/div/div/div/button/span/div"
         ).click()
-        self.user = os.environ.get('USER')
-        self.password = os.environ.get('PASS')
+        self.user = os.environ.get("USER")
+        self.password = os.environ.get("PASS")
         self.driver.find_element_by_xpath("//input[@id='userNameInput']").send_keys(
             str(self.user)
         )  # username goes here
@@ -49,6 +49,8 @@ class menuspider(scrapy.Spider):
         # sleep(0.5)
 
         sel = self.driver.execute_script("return document.body.innerHTML")
+
+        self.driver.quit()
 
         html_to_parse = Selector(text=sel)
 
